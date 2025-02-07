@@ -88,7 +88,7 @@ export default function index() {
         <View>
             <TouchableOpacity>
             <View style={{
-            backgroundColor: '#f6f6f6',
+            backgroundColor: '#e8e6e6',
             width: width*0.91,
             height: 41,
             borderRadius: 50,

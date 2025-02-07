@@ -1,0 +1,162 @@
+[
+    {
+      "name": "Hippo French Tacos",
+      "location": "(Kültür)",
+      "price": "Min. 150 TL",
+      "time": "25-35dk",
+      "Category": "Dünya Mutfağı & Cafe",
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/dürüm.png",
+      "distance": "1.8 km",
+      "rating": 4.6,
+      "review": "(350+)"
+    },
+    {
+      "name": "Dürümcü Bedir Çopur",
+      "location": "(Kültür)",
+      "price": "Min. 200 TL",
+      "time": "20-30dk",
+      "Category": "Sokak Lezzetleri",
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/dürüm.png",
+      "distance": "2.1 km",
+      "yedikceindirim": true,
+      "rating": 4.4,
+      "review": "(150+)"
+    },
+    {
+      "name": "Dürümcü Bedir Çopur",
+      "location": "(Kültür)",
+      "price": "Min. 200 TL",
+      "time": "20-30dk",
+      "Category": "Sokak Lezzetleri",
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/dürüm.png",
+      "distance": "2.1 km",
+      "yedikceindirim": true,
+      "rating": 3.8,
+      "review": "(150+)"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/gagala.png",
+      "name": "Gagala Döner",
+      "price": "Min. 275 TL",
+      "location": "(Kültür)",
+      "Category": "Döner",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "45-55dk",
+      "distance": "2.1 km",
+      "rating": 4.9,
+      "review": "(560+)"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/restaurant.png",
+      "name": "Komagene Etsiz Çiğ Kö...",
+      "price": "Min. 280 TL",
+      "Category": "Sokak Lezzetleri",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "45-55dk",
+      "distance": "2.2 km",
+      "rating": 4.9,
+      "review": "(560+)",
+      "location": "(Kültür)"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/alaiyepilavcısı.png",
+      "name": "Alaiye Pilavcısı",
+      "price": "Min. 275 TL",
+      "Category": "Sokak Lezzetleri",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "50-60dk",
+      "distance": "2.3 km",
+      "rating": 4.9,
+      "review": "(560+)",
+      "location": "(Kültür)",
+      "yedikceindirim": true
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/öncü.png",
+      "name": "Öncü Döner",
+      "price": "Min. 275 TL",
+      "Category": "Döner",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "45-55dk",
+      "distance": "2.0 km",
+      "rating": 4.3,
+      "review": "(560+)",
+      "location": "(Kültür)"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/kfc.png",
+      "name": "KFC",
+      "price": "Min. 90 TL",
+      "Category": "Tavuk",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "25-35dk",
+      "distance": "0.4 km",
+      "rating": 4.5,
+      "review": "(560+)",
+      "location": "(Kültür)"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/mcdonalds.png",
+      "name": "McDonald's",
+      "price": "Min. 140 TL",
+      "Category": "Burger",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "25-35dk",
+      "distance": "2.5 km",
+      "rating": 4.9,
+      "review": "(560+)",
+      "location": "(Kültür)",
+      "yedikceindirim": true
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/burgerking.jpg",
+      "name": "Burger King",
+      "price": "Min. 200 TL",
+      "Category": "Burger",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "30-40dk",
+      "distance": "1.5 km",
+      "rating": 4.2,
+      "review": "(560+)",
+      "location": "(Kültür)",
+      "yedikceindirim": true
+    }
+  ]
+  
+
+
+
+
+
+
+
+
+
+
+// { name: 'Neden Tantuni', location:'(Kültür)',price: 'Min. 250 TL' , time: '30-40dk', Category: 'Sokak Lezzetleri', image: require('@/assets/tantuni.png'),distance:'2.1 km' ,rating:4.7 ,review:'(850+)',},
+
+// { name: 'Hippo French Tacos', location:'(Kültür)',price: 'Min. 150 TL' , time: '25-35dk', Category: 'Dünya Mutfağı & Cafe ', image: require('@/assets/dürüm.png'),distance:'1.8 km' ,rating:4.6 ,review:'(350+)',},
+
+// { name: 'Dürümcü Bedir Çopur',  location:'(Kültür)', price: 'Min. 200 TL' , time: '20-30dk', Category: 'Sokak Lezzetleri', image: require('@/assets/dürüm.png'),distance:'2.1 km', yedikceindirim : true ,rating:4.4 ,review:'(150+)',},
+
+// { name: 'Dürümcü Bedir Çopur',  location:'(Kültür)', price: 'Min. 200 TL' , time: '20-30dk', Category: 'Sokak Lezzetleri', image: require('@/assets/dürüm.png'),distance:'2.1 km', yedikceindirim : true ,rating:3.8 ,review:'(150+)',},
+
+// { image:  require('../../../assets/gagala.png'),name: 'Gagala Döner', price: 'Min. 275 TL' ,  location:'(Kültür)', Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.1 km',rating:4.9 ,review:'(560+)',},
+// { image:  require('../../../assets/restaurant.png'),name: 'Komagene Etsiz Çiğ Kö...', price: 'Min. 280 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.2 km',rating:4.9 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/alaiyepilavcısı.png'),name: 'Alaiye Pilavcısı', price: 'Min. 275 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'50-60dk' ,distance:'2.3 km',rating:4.9 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},
+// { image:  require('../../../assets/öncü.png'),name: 'Öncü Döner', price: 'Min. 275 TL' , Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.0 km',rating:4.3 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/kfc.png'),name: 'KFC', price: 'Min. 90 TL' , Category:'Tavuk', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'0.4 km',rating:4.5 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/mcdonalds.png'),name: 'McDonald\'s', price: 'Min. 140 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'2.5 km',rating:4.9 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},
+// { image:  require('../../../assets/burgerking.jpg'),name: 'Burger King', price: 'Min. 200 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'30-40dk' ,distance:'1.5 km',rating:4.2 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},{ image:  require('../../../assets/gagala.png'),name: 'Gagala Döner', price: 'Min. 275 TL' ,  location:'(Kültür)', Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.1 km',rating:4.9 ,review:'(560+)',},
+// { image:  require('../../../assets/restaurant.png'),name: 'Komagene Etsiz Çiğ Kö...', price: 'Min. 280 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.2 km',rating:4.9 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/alaiyepilavcısı.png'),name: 'Alaiye Pilavcısı', price: 'Min. 275 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'50-60dk' ,distance:'2.3 km',rating:4.9 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},
+// { image:  require('../../../assets/öncü.png'),name: 'Öncü Döner', price: 'Min. 275 TL' , Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.0 km',rating:4.3 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/kfc.png'),name: 'KFC', price: 'Min. 90 TL' , Category:'Tavuk', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'0.4 km',rating:4.5 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/mcdonalds.png'),name: 'McDonald\'s', price: 'Min. 140 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'2.5 km',rating:4.9 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},
+// { image:  require('../../../assets/burgerking.jpg'),name: 'Burger King', price: 'Min. 200 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'30-40dk' ,distance:'1.5 km',rating:4.2 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},{ image:  require('../../../assets/gagala.png'),name: 'Gagala Döner', price: 'Min. 275 TL' ,  location:'(Kültür)', Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.1 km',rating:4.9 ,review:'(560+)',},
+// { image:  require('../../../assets/restaurant.png'),name: 'Komagene Etsiz Çiğ Kö...', price: 'Min. 280 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.2 km',rating:4.9 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/alaiyepilavcısı.png'),name: 'Alaiye Pilavcısı', price: 'Min. 275 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'50-60dk' ,distance:'2.3 km',rating:4.9 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},
+// { image:  require('../../../assets/öncü.png'),name: 'Öncü Döner', price: 'Min. 275 TL' , Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.0 km',rating:4.3 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/kfc.png'),name: 'KFC', price: 'Min. 90 TL' , Category:'Tavuk', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'0.4 km',rating:4.5 ,review:'(560+)', location:'(Kültür)',},
+// { image:  require('../../../assets/mcdonalds.png'),name: 'McDonald\'s', price: 'Min. 140 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'2.5 km',rating:4.9 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},
+// { image:  require('../../../assets/burgerking.jpg'),name: 'Burger King', price: 'Min. 200 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'30-40dk' ,distance:'1.5 km',rating:4.2 ,review:'(560+)', location:'(Kültür)', yedikceindirim : true ,},

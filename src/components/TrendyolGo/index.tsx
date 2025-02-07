@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState ,useEffect} from 'react'
 import { View,Text,ScrollView,TouchableOpacity,Image } from 'react-native'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Fontisto from '@expo/vector-icons/Fontisto';
+import axios from 'axios';
 
 
 
@@ -25,7 +26,38 @@ const restaurants =[
 
 
 export default function index() {
+
+  
+  interface TrendyolGo {
+    name: string;
+    location: string;
+    price: string;
+    time: string;
+    Category: string;
+    image: string;
+    distance: string;
+    rating: number;
+    review: string;
+    yedikceindirim?: boolean;
+  }
+
+
+
+  const [trendyolGo, setTrendyolGo] = useState<TrendyolGo[]>([]);
+
+  useEffect(() => {
+    axios
+    .get('http://192.168.1.104:3000/trendyolGo')
+    .then((response) =>
+    setTrendyolGo(response.data)
+    )
+},[]);
+
+
   return (
+
+
+
     <View>
      {/*trenyolgo hızıyla  tümünü gör */}
     <View 

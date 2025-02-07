@@ -1,5 +1,5 @@
 import React from 'react'
-import { View ,Text,StyleSheet,ScrollView} from 'react-native'
+import { View ,Text,StyleSheet,ScrollView,StatusBar} from 'react-native'
 import FoodSelectionTopBar from '../components/FoodSelectionTopBar'
 import FsFilter from '../components/FsFilter'
 import RestaurantCards from '../components/RestaurantCards';
@@ -18,8 +18,11 @@ import FsRestaurantCards from '../components/FsRestaurantCards'
 
 export default function EatScreen() {
   return (
+    
     <View style={{ flex: 1 }}>
+       <StatusBar barStyle="light-content" backgroundColor="#403e3c" />
       <FoodSelectionTopBar />
+      
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
         <FsFilter />
         <View style={styles.container}>
