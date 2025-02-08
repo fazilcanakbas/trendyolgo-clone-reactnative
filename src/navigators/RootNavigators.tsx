@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screen/HomeScreen';  // HomeScreen'ini doğru şekilde import edin
-import { FontAwesome } from '@expo/vector-icons';  // Örnek icon kullanımı
+import HomeScreen from '../screen/HomeScreen';  
+import { FontAwesome } from '@expo/vector-icons';  
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +34,7 @@ function RootNavigator() {
           tabBarIcon: ({ color }) => <FontAwesome name="home" size={24} color={color} />,
         }}
       />
-      {/* Diğer ekranları ekleyebilirsiniz */}
+   
     </Tab.Navigator>
   );
 }
