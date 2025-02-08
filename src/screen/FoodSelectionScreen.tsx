@@ -44,7 +44,7 @@ export default function EatScreen() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f5f5f5', // Arka plan rengi
-    paddingBottom: 20, // ScrollView'un en alt kısmına biraz boşluk ekleyebilirsiniz
+    paddingBottom: 20, 
   },
 });
 
