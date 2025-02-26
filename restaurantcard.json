@@ -1,0 +1,66 @@
+[
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/gagala.jpg",
+      "name": "Gagala Döner",
+      "price": "Min. 275 TL",
+      "Category": "Döner",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "45-55dk",
+      "distance": "2.1 km"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/burgerking.jpg",
+      "name": "Burger King",
+      "price": "Min. 200 TL",
+      "Category": "Burger",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "30-40dk",
+      "distance": "1.5 km"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/mcdonalds.png",
+      "name": "McDonald's",
+      "price": "Min. 140 TL",
+      "Category": "Burger",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "25-35dk",
+      "distance": "2.5 km"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/kfc.jpg",
+      "name": "KFC",
+      "price": "Min. 90 TL",
+      "Category": "Tavuk",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "25-35dk",
+      "distance": "0.4 km"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/öncü.jpg",
+      "name": "Öncü Döner",
+      "price": "Min. 275 TL",
+      "Category": "Döner",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "45-55dk",
+      "distance": "2.0 km"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/alaiyepilavcısı.jpg",
+      "name": "Alaiye Pilavcısı",
+      "price": "Min. 275 TL",
+      "Category": "Sokak Lezzetleri",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "50-60dk",
+      "distance": "2.3 km"
+    },
+    {
+      "image": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/komagene.jpg",
+      "name": "Komagene Etsiz Çiğ Köftesi",
+      "price": "Min. 280 TL",
+      "Category": "Sokak Lezzetleri",
+      "imagelogo": "https://trendyolgoclone.s3.eu-north-1.amazonaws.com/logo.png",
+      "time": "45-55dk",
+      "distance": "2.2 km"
+    }
+  ]
+  

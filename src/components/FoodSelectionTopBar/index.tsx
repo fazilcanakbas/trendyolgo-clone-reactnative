@@ -5,11 +5,14 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 import Ionicons from '@expo/vector-icons/Ionicons';;
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Feather from '@expo/vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const {width,height} = Dimensions.get('window')
 
 
-export default function index() {
+export default function Index() {
+  const navigation = useNavigation<StackNavigationProp<any>>();
   return (
     <View>
         <View style={{
@@ -17,7 +20,7 @@ export default function index() {
             paddingTop:10, 
         }}>
         {/* Close */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
         <View style={{
             marginLeft:15,
             marginTop:8
@@ -88,7 +91,7 @@ export default function index() {
         <View>
             <TouchableOpacity>
             <View style={{
-            backgroundColor: '#f6f6f6',
+            backgroundColor: '#e8e6e6',
             width: width*0.91,
             height: 41,
             borderRadius: 50,

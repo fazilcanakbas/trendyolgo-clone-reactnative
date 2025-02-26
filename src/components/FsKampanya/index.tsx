@@ -68,7 +68,7 @@ export default function index() {
             width: 150,
             height: 203,
             backgroundColor: 'white',
-           borderRadius:10,
+            borderRadius:10,
             marginTop: 10,
             marginLeft: 7,
             marginRight:3

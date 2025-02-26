@@ -14,7 +14,7 @@ import OfferCards from '../components/OfferCards';
 function HomeScreen() {
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#333333" />
+     <StatusBar barStyle="light-content" backgroundColor="#f87d1d" />
       <View style={styles.container}>
         <TopBar />
         <ScrollView showsVerticalScrollIndicator={false}>

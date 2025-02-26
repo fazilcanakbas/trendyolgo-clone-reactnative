@@ -9,8 +9,7 @@ export default function index() {
     flexDirection: 'row',
     paddingTop:3,
     padding: 20,
-    gap: 13,
-    shadowColor: 'black',
+    gap: 13, 
 }}>
      {/* sırala/sort */}
         <View style={{

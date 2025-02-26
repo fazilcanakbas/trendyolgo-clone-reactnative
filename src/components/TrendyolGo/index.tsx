@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { useState ,useEffect} from 'react'
 import { View,Text,ScrollView,TouchableOpacity,Image } from 'react-native'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Fontisto from '@expo/vector-icons/Fontisto';
+import axios from 'axios';
 
 
 
-const restaurants =[
-    { image:  require('../../../assets/komagene.png'),name: 'Komagene Etsiz Çiğ Kö...', price: 'Min. 280 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.2 km'},
-    { image:  require('../../../assets/alaiyepilavcısı.png'),name: 'Alaiye Pilavcısı', price: 'Min. 275 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'50-60dk' ,distance:'2.3 km'},
-    { image:  require('../../../assets/öncü.png'),name: 'Öncü Döner', price: 'Min. 275 TL' , Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.0 km'},
-    { image:  require('../../../assets/kfc.png'),name: 'KFC', price: 'Min. 90 TL' , Category:'Tavuk', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'0.4 km'},
-    { image:  require('../../../assets/mcdonalds.png'),name: 'McDonald\'s  ', price: 'Min. 140 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'2.5 km'},
-    { image:  require('../../../assets/burgerking.jpg'),name: 'Burger King', price: 'Min. 200 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'30-40dk' ,distance:'1.5 km'},
-   { image:  require('../../../assets/gagala.png'),name: 'Gagala Döner', price: 'Min. 275 TL' , Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.1 km'},
+// const restaurants =[
+//     { image:  require('../../../assets/komagene.png'),name: 'Komagene Etsiz Çiğ Kö...', price: 'Min. 280 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.2 km'},
+//     { image:  require('../../../assets/alaiyepilavcısı.png'),name: 'Alaiye Pilavcısı', price: 'Min. 275 TL' , Category:'Sokak Lezzetleri', imagelogo: require('../../../assets/logo.png') ,time:'50-60dk' ,distance:'2.3 km'},
+//     { image:  require('../../../assets/öncü.png'),name: 'Öncü Döner', price: 'Min. 275 TL' , Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.0 km'},
+//     { image:  require('../../../assets/kfc.png'),name: 'KFC', price: 'Min. 90 TL' , Category:'Tavuk', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'0.4 km'},
+//     { image:  require('../../../assets/mcdonalds.png'),name: 'McDonald\'s  ', price: 'Min. 140 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'25-35dk' ,distance:'2.5 km'},
+//     { image:  require('../../../assets/burgerking.jpg'),name: 'Burger King', price: 'Min. 200 TL' , Category:'Burger', imagelogo: require('../../../assets/logo.png') ,time:'30-40dk' ,distance:'1.5 km'},
+//    { image:  require('../../../assets/gagala.png'),name: 'Gagala Döner', price: 'Min. 275 TL' , Category:'Döner', imagelogo: require('../../../assets/logo.png') ,time:'45-55dk' ,distance:'2.1 km'},
   
   
    
@@ -20,12 +21,39 @@ const restaurants =[
   
 
 
-]
+// ]
+interface TrendyolGo {
+  name: string;
+  location: string;
+  price: string;
+  time: string;
+  Category: string;
+  image: string;
+  distance: string;
+  rating: number;
+  review: string;
+  yedikceindirim?: boolean;
+}
 
 
 
 export default function index() {
+
+  const [restaurants, setRestaurants] = useState<TrendyolGo[]>([]);
+
+  useEffect(() => {
+    axios
+    .get('http://192.168.54.88:3000/trendyolGo')
+    .then((response) =>
+    setRestaurants(response.data)
+    )
+},[]);
+
+
   return (
+
+
+
     <View>
      {/*trenyolgo hızıyla  tümünü gör */}
     <View 
@@ -74,7 +102,8 @@ export default function index() {
           }}> 
          
           <Image 
-            source={restaurant.image}
+            // source={restaurant.image}
+            source={{ uri: restaurant.image }}
             style={{
               width: 152,
               height: 147,
@@ -91,8 +120,8 @@ export default function index() {
               fontWeight: 'bold',
               fontSize: 12.2,
               marginBottom: 0,
-              color:'#282828'
-            }}>
+              color:'#282828',
+            }} numberOfLines={1} /*textin 1 satırda bitmesi*/ >
               {restaurant.name}
             </Text>
             <Text style={{
