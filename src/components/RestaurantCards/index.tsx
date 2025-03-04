@@ -3,7 +3,9 @@ import { View,Text,ScrollView,TouchableOpacity,Image } from 'react-native'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import axios from 'axios';
-
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import RestoranScreen from '@/src/screen/RestoranScreen';
 
 
 
@@ -24,10 +26,11 @@ export default function index() {
     yedikceindirim?: boolean;
   }
   const [restaurantCards, setRestaurantCards] = useState<RestaurantCards[]>([]);
+const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     axios
-    .get('http://192.168.54.88:3000/restaurantcards')
+   .get('http://192.168.116.88:3000/restaurantcards')
     .then((response) => {
       // console.log(response.data);
       setRestaurantCards(response.data); 
@@ -39,6 +42,7 @@ export default function index() {
 
 
   return (
+
     <View>
      {/* sana özel restaurantlar tümünü gör */}
     <View 
@@ -68,7 +72,7 @@ export default function index() {
      horizontal
      showsHorizontalScrollIndicator={false} >
     {restaurantCards.map((restaurant, index) => (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("RestoranScreen")}>
         <View 
           key={index}
           style={{

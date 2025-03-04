@@ -7,6 +7,7 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../../src/screen/HomeScreen';
 import FoodSelectionScreen from '../../src/screen/FoodSelectionScreen';
+import RestoranScreen from '@/src/screen/RestoranScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -20,8 +21,10 @@ function HomeStack() {
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="FoodSelectionScreen" component={FoodSelectionScreen} options={{headerShown:false,headerLeft: () => null }}/>
-      <Stack.Screen name="MarketScreen" component={View} />
-      <Stack.Screen name="WaterScreen" component={View} />
+      <Stack.Screen name="MarketScreen" component={RestoranScreen} />
+
+      <Stack.Screen name="RestoranScreen" component={RestoranScreen} />
+      
     </Stack.Navigator>
   );
 }

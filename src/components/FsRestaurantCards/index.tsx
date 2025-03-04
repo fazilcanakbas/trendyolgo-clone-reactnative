@@ -76,7 +76,7 @@ export default function index() {
   // Veriyi backend'den çekme
   useEffect(() => {
     axios
-      .get('http://192.168.54.88:3000/restaurant') // API URL'i
+      .get('http://192.168.116.88:3000/restaurant') // API URL'i
       .then((response) => {
         setRestaurants(response.data); // Gelen veriyi direkt kaydediyoruz
       })

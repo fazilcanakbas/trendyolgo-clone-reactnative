@@ -3,4 +3,5 @@ type RootStackParamList = {
   FoodSelectionScreen: undefined;
   MarketScreen: undefined;
   WaterScreen: undefined;
+  RestoranScreen: undefined;
 };

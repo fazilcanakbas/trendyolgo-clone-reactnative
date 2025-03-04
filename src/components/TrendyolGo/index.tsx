@@ -43,7 +43,7 @@ export default function index() {
 
   useEffect(() => {
     axios
-    .get('http://192.168.54.88:3000/trendyolGo')
+    .get('http://192.168.116.88:3000/trendyolGo')
     .then((response) =>
     setRestaurants(response.data)
     )
