@@ -42,7 +42,6 @@ const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
 
   return (
-
     <View>
      {/* sana özel restaurantlar tümünü gör */}
     <View 
