@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StatusBar, TouchableOpacity, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, StatusBar, TouchableOpacity, Text,Dimensions } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Entypo from '@expo/vector-icons/Entypo';
@@ -8,6 +8,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../../src/screen/HomeScreen';
 import FoodSelectionScreen from '../../src/screen/FoodSelectionScreen';
 import RestoranScreen from '@/src/screen/RestoranScreen';
+
+const { width,height } = Dimensions.get('window');
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -21,7 +23,7 @@ function HomeStack() {
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="FoodSelectionScreen" component={FoodSelectionScreen} options={{headerShown:false,headerLeft: () => null }}/>
-      <Stack.Screen name="MarketScreen" component={RestoranScreen} />
+      <Stack.Screen name="MarketScreen" component={View} />
 
       <Stack.Screen name="RestoranScreen" component={RestoranScreen} />
       
@@ -31,6 +33,20 @@ function HomeStack() {
 
 // Ana navigasyon yapısı
 export default function Index() {
+  const [loading, setLoading] = useState<string | null>(null);
+
+
+    const [error, setError] = useState<string | null>(null);
+
+
+    if (loading) {
+      return <View style={{ width:width*width,height:height*height,backgroundColor:'#f27a1b'}}> <Text style={{
+        
+      }}></Text></View>;}if (error) {
+            return <Text>{error}</Text>;
+          }
+      
+
   return (
     <NavigationContainer>
       <StatusBar barStyle="dark-content" />

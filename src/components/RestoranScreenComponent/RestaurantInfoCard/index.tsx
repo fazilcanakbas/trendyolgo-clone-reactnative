@@ -1,24 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, Image, Dimensions, TouchableOpacity } from 'react-native'
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
+import axios from 'axios';
+
+interface Restaurant {
+  _id: Int32Array;
+  name: string;
+  distance: string;
+  category: string;
+  image: string;
+ time: string;
+ workingHours: string;
+ rating: number;
+ price: number;
+}
 
 
 const {width,height} = Dimensions.get('window');
 
-export default function index() {
+interface RestaurantInfoCardProps {
+  restaurantCardsId: Int32Array; // Gelen ID'yi alacak prop
+}
+
+export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
+  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    axios
+    axios.get('http://192.168.116.88:5000/api/restaurants')
+    .then((response) => {
+        const restaurants = response.data; 
+        const foundRestaurant = restaurants.find((r: Restaurant) => r._id === restaurantCardsId);
+        setRestaurant(foundRestaurant || null);
+      })
+      .catch((err) => {
+        setError('Veriler alınırken bir hata oluştu');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [restaurantCardsId]); 
   return (
 
        <View style={{flex:1,height:height*0.399,backgroundColor:'white',}}>
         <View style={{backgroundColor:'#f27a1b',height:height*0.29,}}>
           {/* Restaurant Card*/}
           <View style={{backgroundColor:'white',height:height*0.39,width:width*0.9,borderRadius:20,marginLeft:20,elevation:5,}}>
+            
           <View style={{flexDirection:'row'}}> {/* 1.Bölüm Resim ve Bilgiler*/}
             <View> {/*Resim*/}
             <Image 
-            style={{marginLeft:10,marginTop:10}}
-            source={require('../RestaurantInfoCard/restaurantcartlogo.png')}/>
+            style={{marginLeft:10,marginTop:10,width:100,height:100,borderRadius:10,}}
+            source={{ uri: restaurant?.image }}/>
+           
             </View> 
             <View style={{flexDirection:'column',marginTop:15,marginLeft:8}}> {/* 1.Bölüm Sol Taraf Bilgiler*/}
               <Text style={{
@@ -27,14 +65,15 @@ export default function index() {
                           marginBottom: 0,
                           color:'#282828'
                         }}>
-                          Dodo Pizza (Kültür)
+                        {restaurant?.name}
+                       
               </Text>
               <Text style={{
                           fontWeight: '500',
                           fontSize: 10,
                           color: '#585858',
                         }}>
-                          2.2 km • Pizza
+                          {restaurant?.distance} • {restaurant?.category}
               </Text>
       
               {/*Kalp Butonu */}
@@ -143,15 +182,15 @@ export default function index() {
             <View style={{flexDirection:'row',marginTop:5}}>
                <View style={{flexDirection:'column',marginLeft:7,marginTop:10}}>
                <Text style={{fontSize:10,fontWeight:'bold',color:'#848484',marginLeft:13,}}>Çalışma Saatleri</Text>
-               <Text style={{fontSize:11,fontWeight:'bold',marginLeft:15}}>12:00-02:00</Text>
+               <Text style={{fontSize:11,fontWeight:'bold',marginLeft:15}}>{restaurant?.workingHours}</Text>
                </View>
                <View style={{flexDirection:'column',marginLeft:7,marginTop:10}}>
                <Text style={{fontSize:10,fontWeight:'bold',color:'#848484',marginLeft:13,}}>Min Tutar</Text>
-               <Text style={{fontSize:11,fontWeight:'bold',marginLeft:15}}>200 TL</Text>
+               <Text style={{fontSize:11,fontWeight:'bold',marginLeft:15}}>{restaurant?.price} TL</Text>
                </View>
                <View style={{flexDirection:'column',marginLeft:7,marginTop:10}}>
                <Text style={{fontSize:10,fontWeight:'bold',color:'#848484',marginLeft:13,}}>Teslimat Süresi</Text>
-               <Text style={{fontSize:11,fontWeight:'bold',marginLeft:15}}>50-60dk</Text>
+               <Text style={{fontSize:11,fontWeight:'bold',marginLeft:20}}>{restaurant?.time}</Text>
                </View>
                <TouchableOpacity>
                <View style={{height:40,width:65,backgroundColor:'#fef1e8',marginLeft:17,borderRadius:5,marginTop:1}}>

@@ -3,6 +3,8 @@ import { View,Text,ScrollView,TouchableOpacity,Image } from 'react-native'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 
 
@@ -23,11 +25,12 @@ import axios from 'axios';
 
 // ]
 interface TrendyolGo {
+  _id: string;
   name: string;
   location: string;
   price: string;
   time: string;
-  Category: string;
+  category: string;
   image: string;
   distance: string;
   rating: number;
@@ -38,12 +41,12 @@ interface TrendyolGo {
 
 
 export default function index() {
-
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [restaurants, setRestaurants] = useState<TrendyolGo[]>([]);
 
   useEffect(() => {
     axios
-    .get('http://192.168.116.88:3000/trendyolGo')
+    .get('http://192.168.116.88:3000/restaurants')
     .then((response) =>
     setRestaurants(response.data)
     )
@@ -88,7 +91,11 @@ export default function index() {
      horizontal
      showsHorizontalScrollIndicator={false} >
     {restaurants.map((restaurant, index) => (
-      <TouchableOpacity>
+      <TouchableOpacity 
+      onPress={() => {
+        navigation.navigate('RestoranScreen', { _id: restaurant._id });
+      }}
+      >
         <View 
           key={index}
           style={{
@@ -129,7 +136,7 @@ export default function index() {
               fontSize: 10,
               color: '#585858',
             }}>
-              {restaurant.price} • {restaurant.Category}
+              {restaurant.price} TL • {restaurant.category}
             </Text>
             <View style={{
                 flexDirection:'row',

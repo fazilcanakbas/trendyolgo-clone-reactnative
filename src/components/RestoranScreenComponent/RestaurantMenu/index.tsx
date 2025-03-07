@@ -1,156 +1,76 @@
 import { AntDesign, FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons';
-import React,{useState} from 'react'
+import axios from 'axios';
+import React,{useEffect, useState} from 'react'
 import { ScrollView, TouchableOpacity, View ,Text, FlatList ,Image} from 'react-native'
 
 
 
 
-const items: string[] = [
-    "Popüler Lezzetler",
-    "Coca-Cola Cazip Menüleri",
-    "Pizzalar"
-  ];
+
+interface RestaurantMenu {
+  discountedprice: React.JSX.Element;
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  categoryname: string;
+  image: string;
+  like?: string;
+  command?: number;
+  products: {
+    categoryname: string;
+    name: string;
+    description: string;
+    discountedprice: number;
+    price: number;
+    image: string;
+    _id: string;
+  }[];
+}
+
+interface RestaurantMenuProps {
+  restaurantCardsId: string; // Gelen ID'yi alacak prop
+}
+
+
+
+export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [restaurant, setRestaurant] = useState<RestaurantMenu | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+ 
+  useEffect(() => {
+    
+    axios
+      .get('http://192.168.116.88:5000/api/restaurants')
+      .then((response) => {
+        const restaurants = response.data;
+        const foundRestaurant = restaurants.find(
+          (r: RestaurantMenu) => r._id === restaurantCardsId
+        );
+        setRestaurant(foundRestaurant || null);
+      })
+      .catch((err) => {
+        setError('Veriler alınırken bir hata oluştu');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [restaurantCardsId]); 
   
-  const data: { [key: string]: { name: string; price: number; discountedprice?:number , description?: string; image?: string ,like?: string,command? : number }[] } = {
-    "Popüler Lezzetler": [
-      {
-        name: "2 Orta Boy Pizza",
-        discountedprice:409,
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },
-      {
-        name: "2 Orta Boy Pizza",
-        discountedprice:459,
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },    {
-        name: "2 Orta Boy Pizza",
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },    {
-        name: "2 Orta Boy Pizza",
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },    {
-        name: "2 Orta Boy Pizza",
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },    {
-        name: "2 Orta Boy Pizza",
-        discountedprice:399,
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },    {
-        name: "2 Orta Boy Pizza",
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },    {
-        name: "2 Orta Boy Pizza",
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },    {
-        name: "2 Orta Boy Pizza",
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },    {
-        name: "2 Orta Boy Pizza",
-        price: 369,
-        description: "İhtiyacınız olan lezzet ! bir çift orta boy pizza .",
-        image: require('@/assets/pizza1.png'),
-        like: "%83",
-        command: 36
-      },
-      {
-        name: "Sucuklu Pizza",
-        price: 135,
-        description: "Bol sucuklu, özel baharatlarla hazırlanmış enfes pizza.",
-        image: require('@/assets/pizza2.png'),
-        like: "%95",
-        command: 0
-      },
+  if (loading) {
+    return <Text>Loading...</Text>;
+  }
 
-      {
-        name: "Kıymalı Pizza",
-        discountedprice: 150,
-        price: 135,
-        description: "Kıymalı, özel baharatlarla hazırlanmış enfes pizza.",
-        image: require('@/assets/pizza3.png'),
-        like: "%75",
-        command: 1100
-      }
+  if (error) {
+    return <Text>{error}</Text>;
+  }
 
-    ],
-    "Coca-Cola Cazip Menüleri": [
-      {
-        name: "Kola + Hamburger",
-        price: 90,
-        description: "Kola ve lezzetli hamburger menüsü.",
-        image: require('@/assets/tantuni.png'),
-        like: "%85",
-        command: 0
-      },
-      {
-        name: "Kola + Pizza",
-        price: 150,
-        description: "Kola ile mükemmel uyumlu lezzetli pizza menüsü.",
-        image: require('@/assets/tantuni.png'),
-        like: "%90",
-        command: 0
-      },
-    ],
-    "Pizzalar": [
-        {
-            name: "Kola + Hamburger",
-            price: 90,
-            description: "Kola ve lezzetli hamburger menüsü.",
-            image: require('@/assets/tantuni.png'), 
-            like: "%85",
-            command: 0
-        },
-        {
-            name: "Kola",
-            price: 150,
-            description: "Kola ile mdf cxs fdjh dfhjb f hjdf hj dfg hjdf dfjh vg vgh v h g f fdfd fd f gf  fd fd dfvfdvdf fd hf fdh bfdh bdfhb dfjh  fhbdfj ",
-            image: require('@/assets/pizza1.png'),
-        }
-    ]
-  };
-  
-
-  export default function index() {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [selectedData, setSelectedData] = useState(data[items[0]] || []); // Eğer veri yoksa boş array ata
-  
-
-
+  if (!restaurant) {
+    return <Text>Restaurant not found.</Text>;
+  }    
 
 
   return (
@@ -164,10 +84,10 @@ const items: string[] = [
               borderBottomColor: "#e4e4e4",marginBottom:10
           }}
       >
-          {items.map((item, index) => (
-              <TouchableOpacity key={index} onPress={() => {
+          {restaurant.products.map((product, index) => (
+              <TouchableOpacity key={product._id} onPress={() => {
                   setActiveIndex(index);
-                  setSelectedData(data[item]); 
+                  
               } }>
                   <Text
                       style={{
@@ -178,7 +98,7 @@ const items: string[] = [
                           color: activeIndex === index ? '#d2762b' : '#959595',
                       }}
                   >
-                      {item}
+                      {product.categoryname}
                   </Text>
                   {activeIndex === index && (
                       <View
@@ -195,7 +115,7 @@ const items: string[] = [
       </ScrollView>
       <FlatList
       style={{marginBottom:110}}
-              data={selectedData}
+              data={[restaurant.products[activeIndex]]}
               keyExtractor={(_, index) => index.toString()}
               keyboardShouldPersistTaps="handled"
               renderItem={({ item }) => (
@@ -220,10 +140,10 @@ const items: string[] = [
               color: '#959595',
               marginLeft: 14,
               fontWeight: '500',
-              flexWrap: 'wrap', // Metnin taşmasını sağlamak için
-              width: 250, // Genişliği ayarlayabilirsiniz
+              flexWrap: 'wrap', 
+              width: 250, 
             }}
-            numberOfLines={2} // 2 satırdan fazla metin varsa, '...' ile kesilir
+            numberOfLines={2} 
           >
             {item.description}
           </Text>
@@ -233,7 +153,7 @@ const items: string[] = [
                         <FontAwesome5 name="plus" size={16} color="white" />
                         </View>
 
-                        {item.discountedprice && (
+                        {restaurant?.discountedprice && (
                             <View style={{flexDirection:'column'}}>
                                 <View style={{flexDirection:'row'}}>
                                 <Ionicons style={{marginTop:5,marginLeft:7}}name="megaphone" size={15} color='#b60428' />
@@ -241,7 +161,7 @@ const items: string[] = [
                                 </View>
                             <View style={{flexDirection:'row'}}>
                             <Text style={{textDecorationLine:'line-through',fontSize:14.5,fontWeight:'bold',color:'#959595',marginTop:-1,marginLeft:7}}>
-                                {item.discountedprice} TL
+                                {item?.discountedprice} TL
                             </Text>
                             <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#b60428', marginTop: -1, marginLeft: 5 }}>
                                 {item.price} TL
@@ -259,13 +179,13 @@ const items: string[] = [
                         </View>
                         <View style={{flexDirection:'row',marginTop:10,marginLeft:12}}>
                           <AntDesign name="like1" size={18} color="#0cc158" />
-                          <Text style={{fontSize:14,fontWeight:'700',color:"#0cc158",marginLeft:3,marginTop:1}}>{item.like} Beğenildi</Text>
-                          <Text style={{fontWeight:'bold',color:'#676767',fontSize:12,marginLeft:3,marginTop:3}}>({item.command} Değerlendirme)</Text>
+                          <Text style={{fontSize:14,fontWeight:'700',color:"#0cc158",marginLeft:3,marginTop:1}}>{restaurant?.like} Beğenildi</Text>
+                          <Text style={{fontWeight:'bold',color:'#676767',fontSize:12,marginLeft:3,marginTop:3}}>({restaurant?.command} Değerlendirme)</Text>
                         </View>
                         </View>
             
                       {item.image && (
-                          <Image source={typeof item.image === 'string' ? { uri: item.image } : item.image} style={{ width: 100, height: 90, marginLeft:20,marginTop:15 }} />
+                          <Image source={typeof item.image === 'string' ? { uri: item.image } : item?.image} style={{ width: 100, height: 90, marginLeft:20,marginTop:15 }} />
                       )}
                   </View>
                   </View>

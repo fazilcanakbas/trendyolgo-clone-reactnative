@@ -6,6 +6,8 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Octicons from '@expo/vector-icons/Octicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 
 
@@ -59,6 +61,7 @@ const getBackgroundColor = (rating: number) => {
 export default function index() {
 
   interface Restaurant {
+    _id: string;
     name: string;
     location: string;
     price: string;
@@ -70,15 +73,15 @@ export default function index() {
     review: string;
     yedikceindirim?: boolean;
   }
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
-  // Veriyi backend'den çekme
   useEffect(() => {
     axios
-      .get('http://192.168.116.88:3000/restaurant') // API URL'i
+      .get('http://192.168.116.88:3000/restaurant') 
       .then((response) => {
-        setRestaurants(response.data); // Gelen veriyi direkt kaydediyoruz
+        setRestaurants(response.data); 
       })
       .catch((error) => {
         console.error('Veri çekme hatası:', error);
@@ -95,7 +98,7 @@ export default function index() {
         flexDirection:'row',
         paddingTop:10,
         alignItems:'center',
-        marginHorizontal: 15, // Sağ ve sol kenardan boşluk
+        marginHorizontal: 15, 
     }}>
         <View>
        
@@ -157,10 +160,14 @@ export default function index() {
 
 
     {restaurants.map((restaurant, index) => (
-        <TouchableOpacity style={{
-            flexGrow: 1, // İçeriği esnek hale getirir
-            justifyContent: 'center', // Dikey ortalama
-            alignItems: 'center', // Yatay ortalama
+        <TouchableOpacity  
+        onPress={() => navigation.navigate('RestoranScreen', { _id: restaurant._id})}
+        
+        
+        style={{
+            flexGrow: 1, 
+            justifyContent: 'center', 
+            alignItems: 'center', 
             flexDirection:'row'
 
         }}>
@@ -174,7 +181,7 @@ export default function index() {
                 marginTop: 7,
                 flexDirection:'row',
                 gap:7,
-                elevation: 3, // Gölge etkisi
+                elevation: 3, 
 
             }}> 
          
@@ -205,7 +212,7 @@ export default function index() {
               marginBottom: 0,
               color:'#282828'
             }}>
-              {restaurant.name} {restaurant.location}
+              {restaurant.name} ({restaurant.location})
             </Text>
            
             

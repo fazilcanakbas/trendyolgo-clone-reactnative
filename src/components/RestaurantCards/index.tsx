@@ -14,15 +14,16 @@ import RestoranScreen from '@/src/screen/RestoranScreen';
 
 export default function index() {
   interface RestaurantCards {
+    _id: string ;
     name: string;
     location: string;
     price: string;
     time: string;
-    Category: string;
-    image: string;
+    category: string;
+    image?: string;
     distance: string;
-    rating: number;
-    review: string;
+    rating?: number;
+    review?: string;
     yedikceindirim?: boolean;
   }
   const [restaurantCards, setRestaurantCards] = useState<RestaurantCards[]>([]);
@@ -71,7 +72,7 @@ const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
      horizontal
      showsHorizontalScrollIndicator={false} >
     {restaurantCards.map((restaurant, index) => (
-      <TouchableOpacity onPress={() => navigation.navigate("RestoranScreen")}>
+     <TouchableOpacity onPress={() => navigation.navigate("RestoranScreen", { _id: restaurant._id })}>
         <View 
           key={index}
           style={{
@@ -112,7 +113,7 @@ const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
               fontSize: 10,
               color: '#585858',
             }}>
-              {restaurant.price} • {restaurant.Category}
+              {restaurant.price} TL • {restaurant.category}
             </Text>
             <View style={{
                 flexDirection:'row',
