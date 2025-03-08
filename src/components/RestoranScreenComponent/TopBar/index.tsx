@@ -33,7 +33,7 @@ export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
   useEffect(() => {
     // API'den verileri çekmek için axios kullanacağız
   
-    axios.get(`http://192.168.116.88:3000/restaurantcards`)
+    axios.get(`http://192.168.102.88:3000/restaurantcards`)
     .then((response) => {
         const restaurants = response.data; // API'den gelen veriyi alıyoruz
         // restaurantCardsId'ye göre ilgili restoranı bul

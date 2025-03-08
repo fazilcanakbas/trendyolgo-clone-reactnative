@@ -31,7 +31,7 @@ export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
 
   useEffect(() => {
     axios
-    axios.get('http://192.168.116.88:5000/api/restaurants')
+    axios.get('http://192.168.102.88:5000/api/restaurants')
     .then((response) => {
         const restaurants = response.data; 
         const foundRestaurant = restaurants.find((r: Restaurant) => r._id === restaurantCardsId);

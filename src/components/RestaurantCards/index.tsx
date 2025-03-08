@@ -28,17 +28,24 @@ export default function index() {
   }
   const [restaurantCards, setRestaurantCards] = useState<RestaurantCards[]>([]);
 const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+ const api = process.env.API_BASE_URL;
+ console.log("API URL:", api);
 
-  useEffect(() => {
+
+useEffect(() => {
+  if (api) {
     axios
-   .get('http://192.168.116.88:3000/restaurantcards')
-    .then((response) => {
-      // console.log(response.data);
-      setRestaurantCards(response.data); 
-    })
-    .catch((error) => {
-      console.error('Veri çekme hatası:', error);
-    });
+      .get(api)
+      .then((response) => {
+        // console.log(response.data);
+        setRestaurantCards(response.data);
+      })
+      .catch((error) => {
+        console.error('Veri çekme hatası:', error);
+      });
+  } else {
+    console.error('API URL is not defined');
+  }
 }, []);
 
 

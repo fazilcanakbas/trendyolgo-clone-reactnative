@@ -74,7 +74,7 @@ app.get('/trendyolgo',async (req,res) => {
 
 
 
-app.get('/restaurant', async (req, res) => {
+app.get('restaurant', async (req, res) => {
     try {
       const restaurants = await Restaurant.find();
       // console.log('MongoDB verileri:', restaurants);  Loglama

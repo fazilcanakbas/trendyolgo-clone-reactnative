@@ -79,7 +79,7 @@ export default function index() {
 
   useEffect(() => {
     axios
-      .get('http://192.168.116.88:3000/restaurant') 
+      .get('http://192.168.102.88:3000/restaurant') 
       .then((response) => {
         setRestaurants(response.data); 
       })

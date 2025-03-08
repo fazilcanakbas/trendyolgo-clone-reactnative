@@ -4,4 +4,7 @@ type RootStackParamList = {
   MarketScreen: undefined;
   WaterScreen: undefined;
   RestoranScreen: { _id: string };
+  UsersInfoScreen : { id: number };
+  AccountScreen: undefined;
+
 };
