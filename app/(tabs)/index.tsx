@@ -15,6 +15,7 @@ import SavedCardsScreen from '@/src/screen/AccountScreens/SavedCardsScreen';
 import PasswordChangeScreen from '@/src/screen/AccountScreens/PasswordChangeScreen';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import OrdersScreen from '@/src/screen/OrdersScreen';
 
 
 const { width, height } = Dimensions.get('window');
@@ -32,6 +33,7 @@ function HomeStack() {
       <Stack.Screen options={{ headerShown: false }} name="RestoranScreen" component={RestoranScreen} />
       <Stack.Screen name="AccountScreen" component={AccountScreen} />
       <Stack.Screen name="UsersInfoScreen" component={UsersInfoScreen} />
+      <Stack.Screen name="OrdersScreen" component={OrdersScreen} />
     </Stack.Navigator>
   );
 }
@@ -211,8 +213,9 @@ export default function Index() {
         />
         <Tab.Screen
           name="Siparişlerim"
-          component={View}
+          component={OrdersScreen}
           options={{
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
               <FontAwesome6 name="receipt" size={24} color={focused ? '#f87d1d' : '#737373'} />
             ),
