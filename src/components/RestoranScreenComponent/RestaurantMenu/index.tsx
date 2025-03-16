@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, TouchableOpacity, View, Text, FlatList, Image } from 'react-native';
 import axios from 'axios';
 import { AntDesign, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { ParamListBase } from '@react-navigation/native';
 
 interface RestaurantMenu {
   discountedprice: React.JSX.Element;
@@ -25,14 +28,17 @@ interface RestaurantMenu {
 }
 
 interface RestaurantMenuProps {
-  restaurantCardsId: string; // Gelen ID'yi alacak prop
+  restaurantCardsId: string; 
+
 }
 
 export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [restaurant, setRestaurant] = useState<RestaurantMenu | null>(null);
-  const [activeIndex, setActiveIndex] = useState<number>(0); // başlangıçta ilk kategori aktif
+  const [activeIndex, setActiveIndex] = useState<number>(0); 
+  const navigation = useNavigation<StackNavigationProp<ParamListBase>>();
+
 
   useEffect(() => {
     axios
@@ -43,6 +49,7 @@ export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
           (r: RestaurantMenu) => r._id === restaurantCardsId
         );
         setRestaurant(foundRestaurant || null);
+
       })
       .catch((err) => {
         setError('Veriler alınırken bir hata oluştu');
@@ -52,10 +59,9 @@ export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
       });
   }, [restaurantCardsId]);
 
-  // Ekran ilk açıldığında aktif olan kategoriye index atamak için
   useEffect(() => {
     if (restaurant && restaurant.products.length > 0) {
-      setActiveIndex(0); // İlk ürün kategorisini aktif 
+      setActiveIndex(0); 
     }
   }, [restaurant]);
 
@@ -71,10 +77,9 @@ export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
     return <Text>Restaurant not found.</Text>;
   }
 
-  // Benzersiz kategorileri almak için
   const uniqueCategories = Array.from(new Set(restaurant.products.map(product => product.categoryname)));
 
-  // Aktif kategoriye ait ürünleri filtreleme
+
   const activeCategory = restaurant.products.filter(
     (product) => product.categoryname === uniqueCategories[activeIndex]
   );
@@ -131,164 +136,84 @@ export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
           ))}
         </ScrollView>
 
-        {/* Aktif kategoriye ait ürünleri listeleyin */}
+        {/* Aktif kategoriye ait ürünleri listeleme */}
         <FlatList
-          style={{ marginBottom: 110 }}
-          data={activeCategory}
-          keyExtractor={(_, index) => index.toString()}
-          keyboardShouldPersistTaps="handled"
-          renderItem={({ item }) => (
-            <View
-              style={{
-                borderBottomWidth: 1,
-                borderBottomColor: '#ddd',
-              }}
-            >
-              <View style={{ flexDirection: 'row' }}>
-                <View style={{ marginBottom: 20 }}>
-                  <Text
-                    style={{
-                      fontSize: 15,
-                      fontWeight: '600',
-                      marginTop: 8,
-                      marginBottom: 3,
-                      marginLeft: 12,
-                    }}
-                  >
-                    {item.name}
-                  </Text>
+  style={{ marginBottom: 110 }}
+  data={activeCategory}
+  keyExtractor={(item) => item._id.toString()}  
+  keyboardShouldPersistTaps="handled"
+  renderItem={({ item }) => (
+    <TouchableOpacity
+      onPress={() => navigation.navigate("RestaurantProductScreen", { restaurantId: restaurantCardsId, productId: item._id })}
+    >
+      <View style={{ borderBottomWidth: 1, borderBottomColor: '#ddd' }}>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ marginBottom: 20 }}>
+            <Text style={{ fontSize: 15, fontWeight: '600', marginTop: 8, marginBottom: 3, marginLeft: 12 }}>
+              {item.name}
+            </Text>
+            <Text style={{ fontSize: 12, color: '#959595', marginLeft: 14, fontWeight: '500', flexWrap: 'wrap', width: 250 }} numberOfLines={2}>
+              {item.description}
+            </Text>
 
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      color: '#959595',
-                      marginLeft: 14,
-                      fontWeight: '500',
-                      flexWrap: 'wrap',
-                      width: 250,
-                    }}
-                    numberOfLines={2}
-                  >
-                    {item.description}
-                  </Text>
+            {/* Price Section */}
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ width: 45, height: 30, marginLeft: 12, marginTop: 10, backgroundColor: '#f27a1b', borderRadius: 7, justifyContent: 'center', alignItems: 'center' }}>
+                <FontAwesome5 name="plus" size={16} color="white" />
+              </View>
 
+              {restaurant?.discountedprice && (
+                <View style={{ flexDirection: 'column' }}>
                   <View style={{ flexDirection: 'row' }}>
-                    <View
-                      style={{
-                        width: 45,
-                        height: 30,
-                        marginLeft: 12,
-                        marginTop: 10,
-                        backgroundColor: '#f27a1b',
-                        borderRadius: 7,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <FontAwesome5 name="plus" size={16} color="white" />
-                    </View>
-
-                    {restaurant?.discountedprice && (
-                      <View style={{ flexDirection: 'column' }}>
-                        <View style={{ flexDirection: 'row' }}>
-                          <Ionicons
-                            style={{ marginTop: 5, marginLeft: 7 }}
-                            name="megaphone"
-                            size={15}
-                            color="#b60428"
-                          />
-                          <Text
-                            style={{
-                              fontSize: 10.7,
-                              fontWeight: 'bold',
-                              marginLeft: 3,
-                              color: '#b60428',
-                              marginTop: 5,
-                            }}
-                          >
-                            En Düşük Fiyat(7 Gün)
-                          </Text>
-                        </View>
-                        <View style={{ flexDirection: 'row' }}>
-                          <Text
-                            style={{
-                              textDecorationLine: 'line-through',
-                              fontSize: 14.5,
-                              fontWeight: 'bold',
-                              color: '#959595',
-                              marginTop: -1,
-                              marginLeft: 7,
-                            }}
-                          >
-                            {item?.discountedprice} TL
-                          </Text>
-                          <Text
-                            style={{
-                              fontSize: 14.5,
-                              fontWeight: 'bold',
-                              color: '#b60428',
-                              marginTop: -1,
-                              marginLeft: 5,
-                            }}
-                          >
-                            {item.price} TL
-                          </Text>
-                        </View>
-                      </View>
-                    )}
-
-                    {!item.discountedprice && (
-                      <Text
-                        style={{
-                          fontSize: 14.5,
-                          fontWeight: 'bold',
-                          color: '#f27a1b',
-                          marginTop: 15,
-                          marginLeft: 5,
-                        }}
-                      >
-                        {item.price} TL
-                      </Text>
-                    )}
-                  </View>
-                  <View style={{ flexDirection: 'row', marginTop: 10, marginLeft: 12 }}>
-                    <AntDesign name="like1" size={18} color="#0cc158" />
-                    <Text
-                      style={{
-                        fontSize: 14,
-                        fontWeight: '700',
-                        color: '#0cc158',
-                        marginLeft: 3,
-                        marginTop: 1,
-                      }}
-                    >
-                      {restaurant?.like} Beğenildi
+                    <Ionicons style={{ marginTop: 5, marginLeft: 7 }} name="megaphone" size={15} color="#b60428" />
+                    <Text style={{ fontSize: 10.7, fontWeight: 'bold', marginLeft: 3, color: '#b60428', marginTop: 5 }}>
+                      En Düşük Fiyat(7 Gün)
                     </Text>
-                    <Text
-                      style={{
-                        fontWeight: 'bold',
-                        color: '#676767',
-                        fontSize: 12,
-                        marginLeft: 3,
-                        marginTop: 3,
-                      }}
-                    >
-                      ({restaurant?.command} Değerlendirme)
+                  </View>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Text style={{ textDecorationLine: 'line-through', fontSize: 14.5, fontWeight: 'bold', color: '#959595', marginTop: -1, marginLeft: 7 }}>
+                      {item?.discountedprice} TL
+                    </Text>
+                    <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#b60428', marginTop: -1, marginLeft: 5 }}>
+                      {item.price} TL
                     </Text>
                   </View>
                 </View>
+              )}
 
-                {item.image && (
-                  <Image
-                    source={typeof item.image === 'string' ? { uri: item.image } : item?.image}
-                    style={{ width: 100, height: 90, marginLeft: 20, marginTop: 15 }}
-                  />
-                )}
-              </View>
+              {!item.discountedprice && (
+                <Text style={{ fontSize: 14.5, fontWeight: 'bold', color: '#f27a1b', marginTop: 15, marginLeft: 5 }}>
+                  {item.price} TL
+                </Text>
+              )}
             </View>
+
+            {/* Like Section */}
+            <View style={{ flexDirection: 'row', marginTop: 10, marginLeft: 12 }}>
+              <AntDesign name="like1" size={18} color="#0cc158" />
+              <Text style={{ fontSize: 14, fontWeight: '700', color: '#0cc158', marginLeft: 3, marginTop: 1 }}>
+                {restaurant?.like} %99 Beğenildi
+              </Text>
+              <Text style={{ fontWeight: 'bold', color: '#676767', fontSize: 12, marginLeft: 3, marginTop: 3 }}>
+                ({restaurant?.command} 250 Değerlendirme)
+              </Text>
+            </View>
+          </View>
+
+          {/* Image Section */}
+          {item.image && (
+            <Image
+              source={typeof item.image === 'string' ? { uri: item.image } : item?.image}
+              style={{ width: 100, height: 90, marginLeft: 20, marginTop: 15 }}
+            />
           )}
-        />
+        </View>
       </View>
-    </View>
-  );
+    </TouchableOpacity>
+  )}
+/>
+
+  </View>
+</View>
+);
 }

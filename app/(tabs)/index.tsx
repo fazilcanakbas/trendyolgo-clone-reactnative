@@ -8,7 +8,6 @@ import RestoranScreen from '@/src/screen/RestoranScreen';
 import AccountScreen from '@/src/screen/AccountScreen';
 import UsersInfoScreen from '@/src/screen/AccountScreens/UsersInfoScreen';
 import { View, Text, Dimensions, StatusBar } from 'react-native';
-
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import SavedCardsScreen from '@/src/screen/AccountScreens/SavedCardsScreen';
@@ -16,6 +15,8 @@ import PasswordChangeScreen from '@/src/screen/AccountScreens/PasswordChangeScre
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import OrdersScreen from '@/src/screen/OrdersScreen';
+import RestaurantProductScreen from '@/src/screen/RestaurantProductScreen';
+
 
 
 const { width, height } = Dimensions.get('window');
@@ -26,6 +27,7 @@ const Stack = createStackNavigator();
 function HomeStack() {
   return (
     <Stack.Navigator>
+
       <Stack.Screen options={{ headerShown: false }} name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="FoodSelectionScreen" component={FoodSelectionScreen} options={{ headerShown: false, headerLeft: () => null }} />
       <Stack.Screen name="MarketScreen" component={View} />
@@ -34,7 +36,17 @@ function HomeStack() {
       <Stack.Screen name="AccountScreen" component={AccountScreen} />
       <Stack.Screen name="UsersInfoScreen" component={UsersInfoScreen} />
       <Stack.Screen name="OrdersScreen" component={OrdersScreen} />
+      <Stack.Screen options={{ headerShown: false, }} name="RestaurantProductScreen" component={RestaurantProductScreen} />
+
     </Stack.Navigator>
+  );
+}
+
+function ProductStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen options={{ headerShown: false, }} name="RestaurantProductScreen" component={RestaurantProductScreen} />
+      </Stack.Navigator>
   );
 }
 
@@ -232,6 +244,7 @@ export default function Index() {
           
           }}
         />
+
       </Tab.Navigator>
     </>
   );

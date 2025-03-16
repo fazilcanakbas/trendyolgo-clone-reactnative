@@ -37,7 +37,6 @@ useEffect(() => {
     axios
     .get('http://192.168.102.88:3000/restaurants')
       .then((response) => {
-        // console.log(response.data);
         setRestaurantCards(response.data);
       })
       .catch((error) => {

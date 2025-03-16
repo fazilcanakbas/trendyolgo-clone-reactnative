@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { ScrollView, TouchableOpacity, View ,Text ,Dimensions,Image} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import colors from '@/colors';
 
 
 const { width, height } = Dimensions.get('window')
@@ -31,10 +32,10 @@ export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
-
+  
     axios.get(`http://192.168.102.88:3000/restaurants`)
     .then((response) => {
-        const restaurants = response.data; 
+        const restaurants = response.data;
         const foundRestaurant = restaurants.find((r: Restaurant) => r._id === restaurantCardsId);
         setRestaurant(foundRestaurant || null);
       })
@@ -45,7 +46,7 @@ export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
         setLoading(false);
       });
   }, [restaurantCardsId]); 
-
+  
   return (
           
       <ScrollView 
@@ -54,15 +55,15 @@ export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
        <View style={{flex:1,backgroundColor:'white'}}>
       
           {/* Turuncu Kısım */}
-          <View style={{ height:height*0.145, backgroundColor: '#f27a1b' }}>
+          <View style={{ height:height*0.08, backgroundColor: colors.turuncu ,justifyContent:'center'}}>
       
-            {/* Üst Bar [Geri Buton - Restoran Adı - Hakkında Bildir] */}
-            <View style={{backgroundColor:'#f87d1d',height:50,flexDirection:'row',alignItems:'center'}}>
+            {/* Üst Bar [Geri Buton - Restoran Adı - Bildir] */}
+            <View style={{backgroundColor:colors.turuncu,height:50,flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:5}}>
 
             {/*Geri Butonu */}
               <View style={{marginLeft:10}}>
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Ionicons name="arrow-back-outline" size={24} color="white"/>
+                <Ionicons name="close" size={29} color="white"/>
               </TouchableOpacity>
               </View>
             
@@ -72,51 +73,21 @@ export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
                 <Text style={{
                       color:'white',
                       fontSize:16,
-                      fontWeight:'500',
-                      marginLeft:10
-                }}>{restaurant?.name} ({restaurant?.location})</Text>
+                      fontWeight:'bold',
+                     
+                }}>{restaurant?.name}</Text>
               </View>
       
               {/* Hakkında-Bildir Buton */}
-              <View style={{position:'absolute',right:20,flexDirection:'row',justifyContent:'space-between',width:70}}>
+              <View style={{flexDirection:'row',justifyContent:'space-between',width:70,marginRight:-30}}>
                <TouchableOpacity>
-                <Ionicons name="information-circle" size={26} color="white"/>
-                <Text style={{color:'white',fontSize:8,fontWeight:'500',right:4}}>Hakkında</Text>
-               </TouchableOpacity>
-               <TouchableOpacity>
-               <Entypo name="warning" size={26} color="white" />
-                <Text style={{color:'white',fontSize:8,fontWeight:'500',left:4}}>Bildir</Text>
+               <Entypo name="warning" size={22} color="white" />
+                <Text style={{color:'white',fontSize:7,fontWeight:'500',textAlign:'center'}}>Bildir</Text>
                </TouchableOpacity>
                </View>{/* Hakkında-Bildir Buton Bitiş */}
       
             </View> {/* Üst Bar Bitiş */}
       
-          {/* Search Button */}
-            <View>
-              <TouchableOpacity>
-              <View style={{
-                backgroundColor: 'white',
-                width: width*0.91,
-                height: 41,
-                borderRadius: 50,
-                marginHorizontal: 23,
-                marginTop: 8,
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingLeft: 10,
-                marginLeft:20
-              }}>
-                <Feather name="search" size={24} color="#f27a1b" />
-                <Text style={{
-                  marginLeft: 10,
-                  fontSize: 16,
-                  fontWeight: '600',
-                  color: '#666666'
-                }}>Bu Restoranda Ara</Text>
-              </View>
-            </TouchableOpacity>
-            </View> {/* Search Button Bitiş */}
-
           </View>{/* Turuncu Kısım Bitiş */}
 
 

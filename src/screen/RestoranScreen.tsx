@@ -70,7 +70,7 @@ export default function RestoranScreen() {
           showsVerticalScrollIndicator={false}
         >
           <RestaurantInfoCard restaurantCardsId={_id} />
-          <RestaurantMenu restaurantCardsId={_id.toString()} />
+          <RestaurantMenu restaurantCardsId={_id.toString()}  />
         </ScrollView>
       </View>
     </View>

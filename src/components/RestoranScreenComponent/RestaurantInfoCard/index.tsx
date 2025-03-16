@@ -21,7 +21,7 @@ interface Restaurant {
 const {width,height} = Dimensions.get('window');
 
 interface RestaurantInfoCardProps {
-  restaurantCardsId: Int32Array; // Gelen ID'yi alacak prop
+  restaurantCardsId: Int32Array; 
 }
 
 export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
@@ -47,9 +47,9 @@ export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
   return (
 
        <View style={{flex:1,height:height*0.399,backgroundColor:'white',}}>
-        <View style={{backgroundColor:'#f27a1b',height:height*0.29,}}>
+        <View style={{backgroundColor:'#f27a1b',height:height*0.29,alignItems:'center'}}>
           {/* Restaurant Card*/}
-          <View style={{backgroundColor:'white',height:height*0.39,width:width*0.9,borderRadius:20,marginLeft:20,elevation:5,}}>
+          <View style={{backgroundColor:'white',height:height*0.39,width:width*0.9,borderRadius:20,elevation:5,}}>
             
           <View style={{flexDirection:'row'}}> {/* 1.Bölüm Resim ve Bilgiler*/}
             <View> {/*Resim*/}
