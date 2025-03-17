@@ -1,7 +1,7 @@
 import { AntDesign, Entypo, Feather, FontAwesome, FontAwesome6, Fontisto, Ionicons } from '@expo/vector-icons'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { ScrollView, TouchableOpacity, View ,Text ,Dimensions,Image} from 'react-native'
+import { ScrollView, TouchableOpacity, View ,Text ,Dimensions,Image,ActivityIndicator} from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -45,6 +45,10 @@ export default function index({ restaurantCardsId }: RestaurantInfoCardProps) {
         setLoading(false);
       });
   }, [restaurantCardsId]); 
+
+
+
+
 
   return (
           

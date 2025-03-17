@@ -11,10 +11,11 @@ import SiparislerimScreen from '../screen/FoodSelectionScreenNavigator/Siparisle
 import KampanyalarimScreen from '../screen/FoodSelectionScreenNavigator/KampanyalarimScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import FoodSelectionScreen from '../screen/FoodSelectionScreen';
+import RestoranScreen from '../screen/RestoranScreen';
 
 
 const { width, height } = Dimensions.get('window');
-const FoodTab = createBottomTabNavigator();
+const RestoranScreenTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
@@ -48,9 +49,9 @@ const KampanyalarStack = () => (
   </Stack.Navigator>
 );
 
-export default function FoodTabNavigator() {
+export default function RestoranScreenNavigator() {
   return (
-    <FoodTab.Navigator
+    <RestoranScreenTab.Navigator
       screenOptions={{
         tabBarActiveTintColor: '#f87d1d',
         tabBarInactiveTintColor: '#737373',
@@ -63,7 +64,7 @@ export default function FoodTabNavigator() {
         tabBarItemStyle: { maxWidth: 80 }
       }}
     >
-      <FoodTab.Screen 
+      <RestoranScreenTab.Screen 
         name="Keşfet" 
         component={KesfetStack}
         options={{
@@ -72,7 +73,7 @@ export default function FoodTabNavigator() {
           ),
         }}
       />
-      <FoodTab.Screen 
+      <RestoranScreenTab.Screen 
         name="Favorilerim" 
         component={FavorilerimStack}
         options={{
@@ -81,7 +82,7 @@ export default function FoodTabNavigator() {
           ),
         }}
       />
-      <FoodTab.Screen 
+      <RestoranScreenTab.Screen 
         name="Sepetim" 
         component={SepetimStack}
         options={{
@@ -90,7 +91,7 @@ export default function FoodTabNavigator() {
           ),
         }}
       />
-      <FoodTab.Screen 
+      <RestoranScreenTab.Screen 
         name="Siparişlerim" 
         component={SiparislerimStack}
         options={{
@@ -99,7 +100,7 @@ export default function FoodTabNavigator() {
           ),
         }}
       />
-      <FoodTab.Screen 
+      <RestoranScreenTab.Screen 
         name="Kampanyalar" 
         component={KampanyalarStack}
         options={{
@@ -108,6 +109,6 @@ export default function FoodTabNavigator() {
           ),
         }}
       />
-    </FoodTab.Navigator>
+    </RestoranScreenTab.Navigator>
   );
 }

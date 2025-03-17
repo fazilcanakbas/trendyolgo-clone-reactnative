@@ -7,10 +7,10 @@ import UsersInfoScreen from './AccountScreens/UsersInfoScreen';
 
 
 type RootStackParamList = {
-    UsersInfoScreen: { user: { id: number; name: string; icon: string } };  // Burada 'user' tipi olarak object tanımlıyoruz.
-    SavedCardsScreen: undefined; // Add this line
-    PasswordChangeScreen: undefined; // Add this line
-    DefaultScreen: undefined; // Add this line
+    UsersInfoScreen: { user: { id: number; name: string; icon: string } };  
+    SavedCardsScreen: undefined;
+    PasswordChangeScreen: undefined;
+    DefaultScreen: undefined; 
   };
   
 
@@ -43,18 +43,17 @@ export default function AccountScreen() {
             <TouchableOpacity
               style={{ backgroundColor: '#ffff' }}
               onPress={() => {
-                // Her öğe için farklı bir ekran yönlendirmesi yapıyoruz
                 switch (item.name) {
                   case 'Kullanıcı Bilgilerim':
                     navigation.navigate('UsersInfoScreen', { user: { id: item.id, name: item.name, icon: item.icon } });
                     break;
                   case 'Kayıtlı Kartlarım':
-                    navigation.navigate('SavedCardsScreen'); // Örnek başka bir ekran
+                    navigation.navigate('SavedCardsScreen'); 
                     break;
                   case 'Şifre Değişikliği':
-                    navigation.navigate('PasswordChangeScreen'); // Örnek başka bir ekran
+                    navigation.navigate('PasswordChangeScreen'); 
                     break;
-                  // Diğer öğeler için de benzer şekilde ekranlar ekleyebilirsiniz
+                 
                 }
               }}
             >

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, Image, Dimensions, TouchableOpacity, FlatList, Animated, StyleSheet, ScrollView, Modal } from 'react-native'
+import { View, Text, Image, Dimensions, TouchableOpacity, FlatList, Animated, StyleSheet, ScrollView, Modal ,ActivityIndicator} from 'react-native'
 import { AntDesign, Entypo, FontAwesome, Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import colors from '@/colors';
@@ -88,9 +88,7 @@ export default function RestaurantProductScreen() {
     </TouchableOpacity>
   );
 
-  if (loading) {
-    return <Text>Veri yükleniyor...</Text>;
-  }
+
   if (error) {
     return <Text>{error}</Text>;
   }

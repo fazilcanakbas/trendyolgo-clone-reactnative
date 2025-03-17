@@ -63,7 +63,7 @@ export default function RestaurantProductScreen() {
   }, [restaurantId, productId]);
 
   if (loading) {
-    return <Text>Veri yükleniyor...</Text>;
+    return ;
   }
   if (error) {
     return <Text>{error}</Text>;

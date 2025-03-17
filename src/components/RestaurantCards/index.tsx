@@ -13,19 +13,23 @@ import RestoranScreen from '@/src/screen/RestoranScreen';
 
 
 export default function index() {
+  type RootStackParamList = {
+    RestoranScreen: { _id: string };
+  };
+  
   interface RestaurantCards {
-    _id: string ;
-    name: string;
-    location: string;
-    price: string;
-    time: string;
-    category: string;
-    image?: string;
-    distance: string;
-    rating?: number;
-    review?: string;
-    yedikceindirim?: boolean;
-  }
+      _id: string ;
+      name: string;
+      location: string;
+      price: string;
+      time: string;
+      category: string;
+      image?: string;
+      distance: string;
+      rating?: number;
+      review?: string;
+      yedikceindirim?: boolean;
+    }
   const [restaurantCards, setRestaurantCards] = useState<RestaurantCards[]>([]);
 const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
  const api = process.env.API_BASE_URL;

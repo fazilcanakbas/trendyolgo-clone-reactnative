@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView, TouchableOpacity, View, Text, FlatList, Image } from 'react-native';
+import React, { useEffect, useState ,useContext} from 'react';
+import { ScrollView, TouchableOpacity, View, Text, FlatList, Image,Alert,ActivityIndicator} from 'react-native';
 import axios from 'axios';
 import { AntDesign, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ParamListBase } from '@react-navigation/native';
+import { connect } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/cartSlice";
 
 interface RestaurantMenu {
   discountedprice: React.JSX.Element;
@@ -32,7 +35,8 @@ interface RestaurantMenuProps {
 
 }
 
-export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
+function Index(
+  { restaurantCardsId }: RestaurantMenuProps) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [restaurant, setRestaurant] = useState<RestaurantMenu | null>(null);
@@ -59,14 +63,22 @@ export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
       });
   }, [restaurantCardsId]);
 
+
+
   useEffect(() => {
     if (restaurant && restaurant.products.length > 0) {
       setActiveIndex(0); 
     }
   }, [restaurant]);
 
+  
+
   if (loading) {
-    return <Text>Loading...</Text>;
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="orange" />
+      </View>
+    );
   }
 
   if (error) {
@@ -83,6 +95,19 @@ export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
   const activeCategory = restaurant.products.filter(
     (product) => product.categoryname === uniqueCategories[activeIndex]
   );
+
+  const dispatch = useDispatch();
+
+const handleAddToCart = (product) => {
+  dispatch(addToCart({
+    id: product._id,
+    name: product.name,
+    price: product.price,
+    discountedprice: product.discountedprice,
+    image: product.image,
+    quantity: 1,
+  }));
+};
 
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -158,9 +183,13 @@ export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
 
             {/* Price Section */}
             <View style={{ flexDirection: 'row' }}>
+            <TouchableOpacity onPress={() => handleAddToCart(item)}>
               <View style={{ width: 45, height: 30, marginLeft: 12, marginTop: 10, backgroundColor: '#f27a1b', borderRadius: 7, justifyContent: 'center', alignItems: 'center' }}>
                 <FontAwesome5 name="plus" size={16} color="white" />
               </View>
+            </TouchableOpacity>
+
+              
 
               {restaurant?.discountedprice && (
                 <View style={{ flexDirection: 'column' }}>
@@ -216,4 +245,10 @@ export default function Index({ restaurantCardsId }: RestaurantMenuProps) {
   </View>
 </View>
 );
+
+
 }
+
+
+
+export default Index;
