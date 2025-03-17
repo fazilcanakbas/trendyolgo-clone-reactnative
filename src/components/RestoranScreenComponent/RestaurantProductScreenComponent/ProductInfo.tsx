@@ -171,9 +171,34 @@ export default function RestaurantProductScreen() {
                 <Text style={{textAlign:'center',marginTop:3,color:colors.turuncu,fontWeight:'bold'}}>  Ürün Yorumlarını Gör</Text>
             </View>
         </TouchableOpacity>  
+ 
+
+
+
         </View>
+
+
       </View>
-      
+      <View style={{flexDirection:'row',marginTop:230,gap:30,backgroundColor:'white',width:width,height:height*0.1,justifyContent:'center',alignItems:'center',borderRadius:20}} >
+        <View>
+      <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#f27a1b', marginLeft:7 }}>
+                  {product?.price} TL
+      </Text>
+      </View>
+      <View  style={{flexDirection:'row',gap:10}} >
+      <TouchableOpacity>
+            <View style={{width:width*0.35,height:50,borderWidth:1.8 ,borderColor:colors.turuncu,borderRadius:30,justifyContent:'center'}}>
+               <Text style={{textAlign:'center',marginTop:3,color:colors.turuncu,fontWeight:'bold'}}>Hızlı Sipariş Ver</Text>
+            </View>
+        </TouchableOpacity> 
+        <TouchableOpacity>
+            <View style={{width:width*0.35,height:50,backgroundColor:colors.turuncu,borderRadius:30,justifyContent:'center'}}>
+               <Text style={{textAlign:'center',marginTop:3,color:
+                'white',fontWeight:'bold'}}>Sepete Ekle</Text>
+            </View>
+        </TouchableOpacity> 
+        </View>
+        </View>
       
       {isOpen && (
         <TouchableOpacity 

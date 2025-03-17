@@ -6,7 +6,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 const { width, height } = Dimensions.get('window');
 
 function Index() {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<StackNavigationProp<any>>();
 
   return (
     <View style={{ flex: 1, backgroundColor: '#f27a1b' }}>

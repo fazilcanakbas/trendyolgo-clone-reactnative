@@ -23,7 +23,8 @@ interface Product {
 
 export default function RestaurantProductScreen() {
   const route = useRoute<RouteProp<RootStackParamList, "RestaurantProductScreen">>();
-  const { restaurantId, productId } = route.params;
+  const { restaurantId, productId } = route.params || {};
+  console.log("Route Params:", route.params);
 
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -78,6 +79,10 @@ export default function RestaurantProductScreen() {
     {/* <View style={{ flexDirection: 'row',height:height*0.2,backgroundColor:colors.turuncu}}/> */}
     <ProductInfo/>
     </ScrollView>
+
+
+
+    
       
    </View>
   );

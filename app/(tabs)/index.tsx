@@ -16,6 +16,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import OrdersScreen from '@/src/screen/OrdersScreen';
 import RestaurantProductScreen from '@/src/screen/RestaurantProductScreen';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import FavorilerimScreen from '@/src/screen/FoodSelectionScreenNavigator/FavorilerimScreen';
+import FoodTabNavigator from '@/src/navigation/FoodSelectionTabNavigator';
+import KesfetScreen from '@/src/screen/FoodSelectionScreenNavigator/KesfetScreen';
+
 
 
 
@@ -29,26 +34,25 @@ function HomeStack() {
     <Stack.Navigator>
 
       <Stack.Screen options={{ headerShown: false }} name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="FoodSelectionScreen" component={FoodSelectionScreen} options={{ headerShown: false, headerLeft: () => null }} />
+      <Stack.Screen 
+        name="FoodSelectionScreen" 
+        component={FoodTabNavigator} 
+        options={{ headerShown: false, headerLeft: () => null }} 
+      />
+
+      
       <Stack.Screen name="MarketScreen" component={View} />
       <Stack.Screen name="WaterScreen" component={View} />
       <Stack.Screen options={{ headerShown: false }} name="RestoranScreen" component={RestoranScreen} />
       <Stack.Screen name="AccountScreen" component={AccountScreen} />
       <Stack.Screen name="UsersInfoScreen" component={UsersInfoScreen} />
       <Stack.Screen name="OrdersScreen" component={OrdersScreen} />
-      <Stack.Screen options={{ headerShown: false, }} name="RestaurantProductScreen" component={RestaurantProductScreen} />
+      <Stack.Screen options={{ headerShown: false }} name="RestaurantProductScreen" component={RestaurantProductScreen} />
 
     </Stack.Navigator>
   );
 }
 
-function ProductStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen options={{ headerShown: false, }} name="RestaurantProductScreen" component={RestaurantProductScreen} />
-      </Stack.Navigator>
-  );
-}
 
 function AccountStack() {
   return (
@@ -188,6 +192,8 @@ function AccountStack() {
     </Stack.Navigator>
   );}
 
+
+
 export default function Index() {
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -207,10 +213,20 @@ export default function Index() {
     <>
       <StatusBar barStyle="dark-content" />
       <Tab.Navigator
-        screenOptions={{
+         screenOptions={({ route }) => ({
           tabBarActiveTintColor: '#f87d1d',
           tabBarInactiveTintColor: '#737373',
-        }}
+          tabBarStyle: ((route) => {
+            const routeName = getFocusedRouteNameFromRoute(route) ?? '';
+            if (
+              routeName === 'RestaurantProductScreen' || 
+              routeName === 'FoodSelectionScreen'
+            ) {
+              return { display: 'none' };
+            }
+            return undefined;
+          })(route),
+        })}
       >
         <Tab.Screen
           name="Anasayfa"
@@ -246,6 +262,8 @@ export default function Index() {
         />
 
       </Tab.Navigator>
+
+
     </>
   );
 }
