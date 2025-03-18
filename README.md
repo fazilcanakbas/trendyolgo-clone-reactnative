@@ -39,8 +39,14 @@ Ardından aşağıdaki seçeneklerden biriyle çalıştırabilirsiniz:
 
 ## 🤝 Trendyol Go Application Clone
 
-![Image](https://trendyolgoclone.s3.eu-north-1.amazonaws.com/IMG-20250317-WA0013.jpg)
-
+![Image](https://github.com/user-attachments/assets/b04d9078-cdd3-456b-a246-c078e71e74bd)
+![Image](https://github.com/user-attachments/assets/08ac72fb-ae47-4154-9bd3-e7d7f62f9639)
+![Image](https://github.com/user-attachments/assets/0a52c905-151f-4bb3-9891-cbfaf522d07c)
+![Image](https://github.com/user-attachments/assets/6c8265a1-71a5-419e-b540-b25f22f463be)
+![Image](https://github.com/user-attachments/assets/7f615ca0-a7fc-4bac-8339-15286bbe84be)
+![Image](https://github.com/user-attachments/assets/2f14d800-b025-448a-851c-9d7e08d3b53d)
+![Image](https://github.com/user-attachments/assets/cf9209d4-0d11-4599-900b-266769d6c92b)
+![Image](https://github.com/user-attachments/assets/31fad851-b8eb-4060-87b3-9a08afd9ad52)
 
 
 
