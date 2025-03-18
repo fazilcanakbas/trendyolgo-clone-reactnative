@@ -39,14 +39,12 @@ Ardından aşağıdaki seçeneklerden biriyle çalıştırabilirsiniz:
 
 ## 🤝 Trendyol Go Application Clone
 
-![Image](https://github.com/user-attachments/assets/b04d9078-cdd3-456b-a246-c078e71e74bd)
-![Image](https://github.com/user-attachments/assets/08ac72fb-ae47-4154-9bd3-e7d7f62f9639)
-![Image](https://github.com/user-attachments/assets/0a52c905-151f-4bb3-9891-cbfaf522d07c)
-![Image](https://github.com/user-attachments/assets/6c8265a1-71a5-419e-b540-b25f22f463be)
-![Image](https://github.com/user-attachments/assets/7f615ca0-a7fc-4bac-8339-15286bbe84be)
-![Image](https://github.com/user-attachments/assets/2f14d800-b025-448a-851c-9d7e08d3b53d)
-![Image](https://github.com/user-attachments/assets/cf9209d4-0d11-4599-900b-266769d6c92b)
-![Image](https://github.com/user-attachments/assets/31fad851-b8eb-4060-87b3-9a08afd9ad52)
+![Image](https://github.com/user-attachments/assets/19b58139-1962-4178-be84-9b098e5bf37c)
+![Image](https://github.com/user-attachments/assets/30468b73-94a5-4620-8eda-f08cdd3f1171)
+![Image](https://github.com/user-attachments/assets/fb1a2b93-7196-4e39-873e-9afc412a9d8b)
+![Image](https://github.com/user-attachments/assets/1aa81990-4b1b-418e-8eab-dbd85e249b5e)
+
+![Image](https://github.com/user-attachments/assets/e2c7a229-c793-47bf-905a-8a0a00947ace)
 
 
 
